@@ -1,12 +1,27 @@
 const loader = document.getElementById("loader");
+const giftBox = document.getElementById("giftBox");
 const enterBtn = document.getElementById("enterBtn");
 
 const countdown = document.getElementById("countdown");
 const count = document.getElementById("count");
 
 const hero = document.getElementById("hero");
-const music = document.getElementById("music");
+
 const playMusic = document.getElementById("playMusic");
+const music = document.getElementById("music");
+
+giftBox.addEventListener("click", () => {
+
+    giftBox.style.transform = "scale(0)";
+    giftBox.style.opacity = "0";
+
+    document.querySelector(".gift-text").style.display = "none";
+
+    setTimeout(() => {
+        enterBtn.style.display = "inline-block";
+    }, 700);
+
+});
 
 enterBtn.addEventListener("click", () => {
 
@@ -15,17 +30,17 @@ enterBtn.addEventListener("click", () => {
 
     let number = 3;
 
-    count.innerText = number;
+    count.innerHTML = number;
 
     const timer = setInterval(() => {
 
         number--;
 
-        if (number > 0) {
+        if(number>0){
 
-            count.innerText = number;
+            count.innerHTML = number;
 
-        } else {
+        }else{
 
             clearInterval(timer);
 
@@ -36,35 +51,37 @@ enterBtn.addEventListener("click", () => {
 
         }
 
-    }, 1000);
+    },1000);
 
 });
 
-playMusic.addEventListener("click", () => {
+playMusic.addEventListener("click",()=>{
 
     music.play();
 
-    playMusic.innerHTML = "❤️ Music Playing";
+    playMusic.innerHTML="❤️ Playing Heeriye";
 
 });
 
-function startHearts() {
+function startHearts(){
 
-    setInterval(() => {
+    setInterval(()=>{
 
-        const heart = document.createElement("div");
+        const heart=document.createElement("div");
 
-        heart.className = "heart";
+        heart.className="heart";
 
-        heart.innerHTML = ["❤️","💖","💕","💗"][Math.floor(Math.random()*4)];
+        heart.innerHTML=["❤️","💖","💕","💗"][Math.floor(Math.random()*4)];
 
-        heart.style.left = Math.random()*100 + "vw";
-        heart.style.fontSize = (20 + Math.random()*30) + "px";
-        heart.style.animationDuration = (3 + Math.random()*3) + "s";
+        heart.style.left=Math.random()*100+"vw";
+
+        heart.style.fontSize=(20+Math.random()*30)+"px";
+
+        heart.style.animationDuration=(3+Math.random()*3)+"s";
 
         document.body.appendChild(heart);
 
-        setTimeout(() => {
+        setTimeout(()=>{
 
             heart.remove();
 
