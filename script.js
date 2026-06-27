@@ -1,3 +1,5 @@
+const finalPage=document.getElementById("finalPage");
+
 const cakePage=document.getElementById("cakePage");
 const cake=document.getElementById("cake");
 
@@ -164,7 +166,43 @@ cake.onclick=()=>{
 
 cake.innerHTML="🎉";
 
-alert("✨ Happy Birthday Harshita ❤️ ✨\n\nI Love You Forever ❤️\n\n- Piyush");
+setTimeout(()=>{
+
+cakePage.classList.add("hide");
+
+finalPage.classList.remove("hide");
+
+startFireworks();
+
+},1200);
+
+}
+
+function startFireworks(){
+
+setInterval(()=>{
+
+let fire=document.createElement("div");
+
+fire.innerHTML=["🎆","✨","🎇","💖"][Math.floor(Math.random()*4)];
+
+fire.style.position="fixed";
+
+fire.style.left=Math.random()*100+"vw";
+
+fire.style.top=Math.random()*80+"vh";
+
+fire.style.fontSize=(30+Math.random()*40)+"px";
+
+document.body.appendChild(fire);
+
+setTimeout(()=>{
+
+fire.remove();
+
+},1500);
+
+},200);
 
 }
 
