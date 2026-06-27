@@ -230,3 +230,76 @@ document.addEventListener('mousemove', function(e) {
   // Remove sparkle after animation completes
   setTimeout(() => sparkle.remove(), 600);
 });
+
+/ Hidden surprise message - only works on final page
+let touchTimer;
+let surpriseShown = false;
+
+function initHiddenSurprise() {
+  // Only activate when finalPage is visible
+  if (finalPage.classList.contains('hide')) return;
+  
+  const activateSurprise = () => {
+    if (surpriseShown) return;
+    surpriseShown = true;
+    
+    document.body.innerHTML = `
+      <div style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background: #000;
+        color: #ff69b4;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 20px;
+        animation: fadeIn 1s ease-in;
+      ">
+        <div style="font-size: 50px; margin-bottom: 20px;">❤️</div>
+        <div style="font-size: 26px; line-height: 1.6; max-width: 600px; font-weight: bold;">
+          Will you keep choosing me,<br>
+          just as I'll keep choosing you?<br><br>
+          Happy Birthday Harshita 🎂
+        </div>
+      <style>
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+      </style>
+    `;
+  };
+
+  // Touch for mobile
+  document.body.addEventListener('touchstart', () => {
+    if (finalPage.classList.contains('hide')) return;
+    touchTimer = setTimeout(activateSurprise, 5000);
+  });
+
+  document.body.addEventListener('touchend', () => {
+    clearTimeout(touchTimer);
+  });
+
+  // Mouse for desktop testing
+  document.body.addEventListener('mousedown', () => {
+    if (finalPage.classList.contains('hide')) return;
+    touchTimer = setTimeout(activateSurprise, 5000);
+  });
+
+  document.body.addEventListener('mouseup', () => {
+    clearTimeout(touchTimer);
+  });
+}
+
+// Call this when final page opens
+cake.onclick = () => {
+  cake.innerHTML = "🎉";
+  setTimeout(() => {
+    cakePage.classList.add("hide");
+    finalPage.classList.remove("hide");
+    startFireworks();
+    initHiddenSurprise(); // Start listening for 5sec hold
+  }, 1200);
+}
