@@ -219,3 +219,14 @@ function createPetal() {
 }
 setInterval(createPetal, 300);
 
+// Sparkle cursor effect
+document.addEventListener('mousemove', function(e) {
+  let sparkle = document.createElement('div');
+  sparkle.className = 'sparkle';
+  sparkle.style.left = e.pageX + 'px';
+  sparkle.style.top = e.pageY + 'px';
+  document.body.appendChild(sparkle);
+  
+  // Remove sparkle after animation completes
+  setTimeout(() => sparkle.remove(), 600);
+});
