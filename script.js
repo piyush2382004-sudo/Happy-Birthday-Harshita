@@ -1,3 +1,14 @@
+const cakePage=document.getElementById("cakePage");
+const cake=document.getElementById("cake");
+
+const nextPage=document.getElementById("nextPage");
+
+const letterPage=document.getElementById("letterPage");
+
+const letterText=document.getElementById("letterText");
+
+const letterNext=document.getElementById("letterNext");
+
 const loader = document.getElementById("loader");
 const giftBox = document.getElementById("giftBox");
 const enterBtn = document.getElementById("enterBtn");
@@ -90,3 +101,70 @@ function startHearts(){
     },250);
 
 }
+
+const message=`Happy Birthday Harshita ❤️
+
+You are the most beautiful part of my life.
+
+Every smile of yours makes my day brighter.
+
+Thank you for coming into my life.
+
+I may not always express my feelings perfectly,
+but one thing is always true...
+
+I Love You So Much ❤️
+
+I wish you endless happiness,
+good health,
+success,
+and a lifetime full of smiles.
+
+Happy Birthday My Love ❤️
+
+Forever Yours,
+
+Piyush ❤️`;
+
+nextPage.onclick=()=>{
+
+hero.classList.add("hide");
+
+letterPage.classList.remove("hide");
+
+let i=0;
+
+letterText.innerHTML="";
+
+const typing=setInterval(()=>{
+
+letterText.innerHTML+=message.charAt(i);
+
+i++;
+
+if(i>=message.length){
+
+clearInterval(typing);
+
+}
+
+},40);
+
+}
+
+letterNext.onclick=()=>{
+
+letterPage.classList.add("hide");
+
+cakePage.classList.remove("hide");
+
+}
+
+cake.onclick=()=>{
+
+cake.innerHTML="🎉";
+
+alert("✨ Happy Birthday Harshita ❤️ ✨\n\nI Love You Forever ❤️\n\n- Piyush");
+
+}
+
