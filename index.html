@@ -1,198 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-<title>Happy Birthday Harshita ❤️</title>
-
-<link rel="stylesheet" href="style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
-</head>
-
-<body>
-
-<div id="loader">
-
-<h1 class="typing">
-A Surprise For Harshita ❤️
-</h1>
-
-<p>
-Made with ❤️ by Piyush
-</p>
-<div class="gift-box" id="giftBox">
-    🎁
-</div>
-
-<p class="gift-text">
-    Tap the Gift to Begin
-</p>
-
-  <button id="enterBtn">
-🎁 Open My Surprise
-</button>
-
-</div>
-
-<div id="main" class="hide">
-
-<div id="countdown">
-
-<span id="count">
-3
-</span>
-
-</div>
-
-<div id="hero" class="hide">
-
-<h1>
-🎉 Happy Birthday Harshita ❤️
-</h1>
-
-<p class="subtitle">
-You are the most beautiful part of my life ✨
-</p>
-
-<img src="photo.jpg" id="photo">
-
-<button id="playMusic">
-🎵 Play Heeriye
-</button>
-
-<audio id="music">
-
-<source src="Heeriye Arijit Singh 320 Kbps.mp3" type="audio/mpeg">
-
-</audio>
-
-<div id="heartContainer"></div>
-
-<button id="nextPage">
-Continue ❤️
-</button>
-
-</div>
-
-</div>
-
-<div id="letterPage" class="hide">
-
-    <div class="letter">
-
-        <h1>💌 A Letter For You</h1>
-
-        <p id="letterText"></p>
-
-        <button id="letterNext">
-            Continue ❤️
-        </button>
-
-    </div>
-
-</div>
-
-<div id="cakePage" class="hide">
-
-    <h1>🎂 Make A Birthday Wish</h1>
-
-    <div id="cake">
-        🎂
-    </div>
-
-    <p>Tap the cake to blow the candles 🕯️</p>
-
-</div>
-
-<div id="finalPage" class="hide">
-
-    <canvas id="fireworks"></canvas>
-
-    <div class="final-content">
-
-        <h1>❤️ Happy Birthday Harshita ❤️</h1>
-
-        <h2>Forever Yours,</h2>
-
-        <h1>Piyush ❤️</h1>
-
-        <p>
-            Thank you for coming into my life.<br>
-            I Love You Today,<br>
-            Tomorrow,<br>
-            And Forever. ❤️
-        </p>
-
-    </div>
-
-</div>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Harshita 🎂</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     
-<script src="script.js"></script>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
 
-<script>
-  // Confetti blast on page load
-  window.addEventListener('load', () => {
-    confetti({
-      particleCount: 200,
-      spread: 160,
-      origin: { y: 0.6 }
-    });
+    .page { display: none; animation: fadeIn 0.8s; }
+    .page.active { display: block; }
+
+    h1 { 
+      font-size: 2.8rem; 
+      margin-bottom: 15px;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
     
-    // Second smaller blast after 2 seconds
-    setTimeout(() => {
-      confetti({
-        particleCount: 100,
-        spread: 120,
-        origin: { y: 0.7 }
-      });
-    }, 2000);
-  });
-</script>
+    h2 { font-size: 2rem; margin-bottom: 20px; }
     
-<!-- Background Music Player -->
-    
-<audio id="bgMusic" loop>
-  <source src="Heeriye Arijit Singh 320 Kbps.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
+    p { 
+      font-size: 1.2rem; 
+      line-height: 1.6; 
+      margin: 20px 0;
+      opacity: 0.95;
+    }
 
-<script>
-let musicStarted = false;
-
-// Start music on first click anywhere on page
-document.body.addEventListener('click', () => {
-  if (!musicStarted) {
-    const music = document.getElementById('bgMusic');
-    music.volume = 0.5; // Set volume to 50%
-    music.play().catch(e => {
-      console.log('Autoplay blocked by browser, waiting for user click');
-    });
-    musicStarted = true;
-  }
-});
-
-// Try autoplay on page load - works on some browsers
-window.addEventListener('load', () => {
-  const music = document.getElementById('bgMusic');
-  music.play().catch(e => {
-    console.log('Autoplay blocked on load, will start on click');
-  });
-});
-    
-</script>
-
-</body>
-
-<div class="petals-container">
-    
-</div>
-
-</html>
+    .card {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      padding: 40px 30px;
+      border-radius: 25px;
+      box-shadow: 0 8px 32px rgba(0,0,0
