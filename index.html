@@ -3,21 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Harshita 🎂</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>For Harshita 🎂</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: #fff;
+      background: linear-gradient(135deg, #FFB6C1 0%, #FFC0CB 50%, #FFD1DC 100%);
+      color: #4A4A4A;
       min-height: 100vh;
       overflow-x: hidden;
     }
 
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, #FFB6C1 0%, #FFC0CB 25%, #FFD1DC 50%, #FFE4E1 75%, #FFB6C1 100%);
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+      z-index: -1;
+    }
+
+    @keyframes gradientMove {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
     .container {
-      max-width: 500px;
+      max-width: 550px;
       margin: 0 auto;
       padding: 20px;
       min-height: 100vh;
@@ -28,27 +44,341 @@
       text-align: center;
     }
 
-    .page { display: none; animation: fadeIn 0.8s; }
+    .page {
+      display: none;
+      width: 100%;
+      animation: slideUp 0.8s ease;
+    }
+
     .page.active { display: block; }
 
-    h1 { 
-      font-size: 2.8rem; 
-      margin-bottom: 15px;
-      text-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    }
-    
-    h2 { font-size: 2rem; margin-bottom: 20px; }
-    
-    p { 
-      font-size: 1.2rem; 
-      line-height: 1.6; 
-      margin: 20px 0;
-      opacity: 0.95;
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .card {
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(10px);
-      padding: 40px 30px;
-      border-radius: 25px;
-      box-shadow: 0 8px 32px rgba(0,0,0
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(20px);
+      padding: 45px 35px;
+      border-radius: 30px;
+      box-shadow: 0 10px 40px rgba(255, 182, 193, 0.5);
+      border: 3px solid rgba(255, 255, 255, 0.5);
+      position: relative;
+    }
+
+    .card::after {
+      content: '✨';
+      position: absolute;
+      top: -18px;
+      right: -18px;
+      font-size: 2.5rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.3) rotate(20deg); }
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+      color: #FF1493;
+      text-shadow: 3px 3px 10px rgba(255, 105, 180, 0.3);
+    }
+
+    h2 {
+      font-size: 2.3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #FF69B4;
+    }
+
+    p {
+      font-size: 1.25rem;
+      line-height: 1.8;
+      margin: 25px 0;
+      font-weight: 500;
+      color: #5A5A5A;
+    }
+
+    .emoji-big {
+      font-size: 5rem;
+      margin: 25px 0;
+      animation: bounce 2s infinite;
+      filter: drop-shadow(0 5px 15px rgba(255, 105, 180, 0.4));
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-20px) scale(1.1); }
+    }
+
+    button {
+      padding: 18px 45px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fff 0%, #FFF5F7 100%);
+      color: #FF69B4;
+      border: 3px solid #FFB6C1;
+      border-radius: 50px;
+      cursor: pointer;
+      margin: 15px 8px;
+      transition: all 0.3s;
+      box-shadow: 0 5px 20px rgba(255, 182, 193, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    button:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 10px 30px rgba(255, 105, 180, 0.7);
+      background: linear-gradient(135deg, #FF69B4 0%, #FF1493 100%);
+      color: #fff;
+      border-color: #FF69B4;
+    }
+
+    button:active { transform: scale(0.95); }
+
+    .mystery-box {
+      width: 200px;
+      height: 200px;
+      margin: 30px auto;
+      background: linear-gradient(135deg, #FF69B4, #FF1493);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      cursor: pointer;
+      animation: shake 3s infinite;
+      box-shadow: 0 10px 30px rgba(255, 105, 180, 0.5);
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-5deg); }
+      75% { transform: rotate(5deg); }
+    }
+
+    .mystery-box:hover {
+      animation: none;
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .photo-frame {
+      width: 250px;
+      height: 250px;
+      margin: 25px auto;
+      border-radius: 50%;
+      border: 6px solid #fff;
+      box-shadow: 0 8px 30px rgba(255, 105, 180, 0.5);
+      overflow: hidden;
+      animation: glow 3s infinite;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 8px 30px rgba(255, 105, 180, 0.5); }
+      50% { box-shadow: 0 8px 40px rgba(255, 20, 147, 0.8); }
+    }
+
+    .cute-msg {
+      background: rgba(255, 255, 255, 0.4);
+      padding: 25px;
+      border-radius: 20px;
+      margin: 25px 0;
+      border: 2px dashed #FF69B4;
+      font-size: 1.15rem;
+      line-height: 1.9;
+    }
+
+    .progress {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin: 35px 0 20px 0;
+    }
+
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      border: 2px solid #FFB6C1;
+      transition: all 0.4s;
+    }
+
+    .dot.active {
+      background: #FF1493;
+      border-color: #FF1493;
+      transform: scale(1.4);
+      box-shadow: 0 0 15px #FF1493;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2.3rem; }
+      h2 { font-size: 1.9rem; }
+      p { font-size: 1.1rem; }
+      .card { padding: 35px 25px; }
+      button { width: 100%; padding: 16px 30px; }
+      .emoji-big { font-size: 4rem; }
+      .photo-frame { width: 200px; height: 200px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- PAGE 1: INTERESTING -->
+    <div class="page active" id="page1">
+      <div class="card">
+        <div class="emoji-big">🤔</div>
+        <h1>Yo Harshita</h1>
+        <p>Aaj kuch normal nahi hai...<br>Kuch hatke plan kiya hai 😏<br>Dekhegi kya hai?</p>
+        <div class="mystery-box" onclick="openBox()">🎁</div>
+        <p style="font-size: 0.95rem; opacity: 0.8;">Box pe tap kar, dar mat</p>
+        <div class="progress">
+          <div class="dot active"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 2: HAPPY BIRTHDAY + DHAMAKA -->
+    <div class="page" id="page2">
+      <div class="card">
+        <div class="emoji-big">🎂💥</div>
+        <h1>HAPPY BIRTHDAY</h1>
+        <h2>Harshita 🎉</h2>
+        <p>
+          Chal maan liya yaad tha 😎<br>
+          Isiliye ye bana diya...<br>
+          Ab treat kab de rahi hai? 🍕
+        </p>
+        <button onclick="dhamaka()">🎊 Dhamaka!</button>
+        <button onclick="nextPage(3)">Last Page 👉</button>
+        <div class="progress">
+          <div class="dot active"></div>
+          <div class="dot active"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 3: CUTE MESSAGE + PHOTO -->
+    <div class="page" id="page3">
+      <div class="card">
+        <div class="emoji-big">😎</div>
+        <h2>Bas Itna Hi Tha</h2>
+        
+        <div class="photo-frame">
+          <img src="IMG-20250825-WA0003.jpg" alt="Harshita" onerror="this.src='https://via.placeholder.com/250/FFB6C1/FFFFFF?text=Harshita'">
+        </div>
+
+        <div class="cute-msg">
+          <p>
+            Dekh zyada senti nahi ho raha 😏<br><br>
+            
+            Birthday tha to wish kar diya.<br>
+            Bhool gaya hota to problem hoti 😂<br><br>
+            
+            Achhe se mana le apna din...<br>
+            Aur haan, ek saal aur buddhi ho gayi 😜<br><br>
+            
+            <strong>- Piyush</strong>
+          </p>
+        </div>
+        
+        <button onclick="playSong()">🎵 Gaana Baja</button>
+        <button onclick="nextPage(1)">🔄 Wapas</button>
+        
+        <div class="progress">
+          <div class="dot active"></div>
+          <div class="dot active"></div>
+          <div class="dot active"></div>
+        </div>
+      </div>
+    </div>
+
+  <audio id="bgMusic" loop>
+    <source src="Heeriye Arijit Singh 320 Kbps.mp3" type="audio/mpeg">
+  </audio>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <script>
+    function openBox() {
+      confetti({
+        particleCount: 150,
+        spread: 180,
+        origin: { y: 0.6 },
+        colors: ['#FF69B4', '#FF1493', '#FFB6C1', '#FFFFFF']
+      });
+      
+      setTimeout(() => {
+        nextPage(2);
+        setTimeout(dhamaka, 500);
+      }, 800);
+    }
+
+    function nextPage(num) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page' + num).classList.add('active');
+      window.scrollTo(0, 0);
+    }
+
+    function dhamaka() {
+      const duration = 3 * 1000;
+      const end = Date.now() + duration;
+
+      (function frame() {
+        confetti({
+          particleCount: 5,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 },
+          colors: ['#FF69B4', '#FF1493', '#FFB6C1']
+        });
+        confetti({
+          particleCount: 5,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 },
+          colors: ['#FF69B4', '#FF1493', '#FFB6C1']
+        });
+        if (Date.now() < end) requestAnimationFrame(frame);
+      }());
+    }
+
+    function playSong() {
+      const music = document.getElementById('bgMusic');
+      music.volume = 0.5;
+      music.play();
+      
+      confetti({
+        particleCount: 100,
+        spread: 160,
+        origin: { y: 0.6 },
+        colors: ['#FF69B4', '#FF1493', '#FFB6C1']
+      });
+      
+      alert('🎵 Chal enjoy kar');
+    }
+
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
+      }, 500);
+    });
+  </script>
+</body>
+</html>
