@@ -1,50 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
 <title>Happy Birthday Harshita ❤️</title>
 
 <link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-<div class="loading">
-<h1>🎁 A Surprise For Harshita ❤️</h1>
-<button id="startBtn">Open My Surprise 🎁</button>
-</div>
+<div id="loader">
 
-<div class="main hidden">
-
-<h1 class="title">
-Happy Birthday Harshita ❤️
+<h1 class="typing">
+A Surprise For Harshita ❤️
 </h1>
 
-<img src="photo.jpg" class="photo">
-
-<p class="msg">
-Every moment with you is beautiful ❤️
+<p>
+Made with ❤️ by Piyush
 </p>
 
-<button id="musicBtn">
+<button id="enterBtn">
+🎁 Open My Surprise
+</button>
+
+</div>
+
+<div id="main" class="hide">
+
+<div id="countdown">
+
+<span id="count">
+3
+</span>
+
+</div>
+
+<div id="hero" class="hide">
+
+<h1>
+🎉 Happy Birthday Harshita ❤️
+</h1>
+
+<p class="subtitle">
+You are the most beautiful part of my life ✨
+</p>
+
+<img src="photo.jpg" id="photo">
+
+<button id="playMusic">
 🎵 Play Heeriye
 </button>
 
-<audio id="song">
+<audio id="music">
+
 <source src="heeriye.mp3" type="audio/mp3">
+
 </audio>
 
-<div class="hearts"></div>
+<div id="heartContainer"></div>
 
-<button id="nextBtn">
+<button id="nextPage">
 Continue ❤️
 </button>
+
+</div>
 
 </div>
 
 <script src="script.js"></script>
 
 </body>
+
 </html>
