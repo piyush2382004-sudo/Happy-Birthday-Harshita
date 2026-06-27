@@ -2,25 +2,38 @@
 let currentPage = 1;
 const totalPages = 3;
 let musicPlaying = false;
+let musicStarted = false; // Track if music started once
+
+// ===== AUTO PLAY MUSIC ON FIRST INTERACTION =====
+function startMusicOnFirstTap() {
+  if (!musicStarted) {
+    const music = document.getElementById('bgMusic');
+    if (music) {
+      music.volume = 0.5;
+      music.play().then(() => {
+        musicPlaying = true;
+        musicStarted = true;
+        console.log('🎵 Music auto-started on first tap');
+      }).catch(err => {
+        console.log('Music autoplay blocked:', err);
+      });
+    }
+  }
+}
 
 // ===== PAGE NAVIGATION =====
 function nextPage(num) {
-  // Hide all pages
   document.querySelectorAll('.page').forEach(page => {
     page.classList.remove('active');
   });
 
-  // Show target page
   const targetPage = document.getElementById('page' + num);
   if (targetPage) {
     targetPage.classList.add('active');
     currentPage = num;
     window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    // Update progress dots
     updateProgressDots(num);
 
-    // Page specific actions
     if (num === 2) {
       setTimeout(dhamaka, 600);
     }
@@ -39,8 +52,11 @@ function updateProgressDots(pageNum) {
   });
 }
 
-// ===== PAGE 1: MYSTERY BOX =====
+// ===== PAGE 1: MYSTERY BOX + AUTO MUSIC =====
 function openBox() {
+  // Start music on first tap
+  startMusicOnFirstTap();
+
   // Confetti explosion
   const colors = ['#FF69B4', '#FF1493', '#FFB6C1', '#FFFFFF', '#FF007F'];
 
@@ -53,7 +69,6 @@ function openBox() {
     scalar: 1.2
   });
 
-  // Secondary burst
   setTimeout(() => {
     confetti({
       particleCount: 100,
@@ -71,7 +86,7 @@ function openBox() {
     });
   }, 200);
 
-  // Box shake effect
+  // Box animation
   const box = document.querySelector('.mystery-box');
   if (box) {
     box.style.animation = 'none';
@@ -80,6 +95,9 @@ function openBox() {
       box.style.transform = 'scale(1.2) rotate(0deg)';
     }, 200);
   }
+
+  // Show toast
+  showToast('🎵 Heeriye shuru + Dhamaka! 🎉');
 
   // Navigate to page 2
   setTimeout(() => {
@@ -93,7 +111,6 @@ function dhamaka() {
   const animationEnd = Date.now() + duration;
   const colors = ['#FF69B4', '#FF1493', '#FFB6C1', '#FF007F'];
 
-  // Continuous confetti
   (function frame() {
     confetti({
       particleCount: 7,
@@ -115,7 +132,6 @@ function dhamaka() {
       scalar: 1.1
     });
 
-    // Center burst
     if (Math.random() > 0.5) {
       confetti({
         particleCount: 15,
@@ -131,7 +147,7 @@ function dhamaka() {
     }
   })();
 
-  // Fireworks effect
+  // Fireworks
   setTimeout(() => {
     const count = 200;
     const defaults = { origin: { y: 0.7 } };
@@ -151,7 +167,7 @@ function dhamaka() {
   }, 500);
 }
 
-// ===== PAGE 3: PLAY SONG =====
+// ===== PAGE 3: PLAY/PAUSE SONG =====
 function playSong() {
   const music = document.getElementById('bgMusic');
 
@@ -164,6 +180,7 @@ function playSong() {
     music.volume = 0.6;
     music.play().then(() => {
       musicPlaying = true;
+      musicStarted = true;
 
       // Heart confetti
       const colors = ['#FF69B4', '#FF1493', '#FFB6C1'];
@@ -181,8 +198,7 @@ function playSong() {
         scalar: 2
       });
 
-      // Success message
-      showToast('🎵 Heeriye baj raha hai... Enjoy! ❤️');
+      showToast('🎵 Gaana chal raha hai ❤️');
 
     }).catch(err => {
       console.error('Music play error:', err);
@@ -198,11 +214,9 @@ function playSong() {
 
 // ===== TOAST NOTIFICATION =====
 function showToast(message) {
-  // Remove existing toast
   const existingToast = document.querySelector('.toast');
   if (existingToast) existingToast.remove();
 
-  // Create toast
   const toast = document.createElement('div');
   toast.className = 'toast';
   toast.textContent = message;
@@ -225,14 +239,13 @@ function showToast(message) {
 
   document.body.appendChild(toast);
 
-  // Remove after 3 seconds
   setTimeout(() => {
     toast.style.animation = 'toastSlideOut 0.5s ease forwards';
     setTimeout(() => toast.remove(), 500);
   }, 3000);
 }
 
-// Add toast animations to document
+// Add toast animations
 const style = document.createElement('style');
 style.textContent = `
   @keyframes toastSlide {
@@ -257,7 +270,6 @@ window.addEventListener('load', () => {
     });
   }, 800);
 
-  // Welcome sparkle
   setTimeout(() => {
     confetti({
       particleCount: 50,
@@ -303,10 +315,8 @@ function handleSwipe() {
 
   if (Math.abs(diff) > swipeThreshold) {
     if (diff > 0 && currentPage < totalPages) {
-      // Swipe left - next page
       nextPage(currentPage + 1);
     } else if (diff < 0 && currentPage > 1) {
-      // Swipe right - previous page
       nextPage(currentPage - 1);
     }
   }
@@ -325,7 +335,7 @@ document.addEventListener('touchend', (e) => {
 // ===== CONSOLE EASTER EGG =====
 console.log('%c🎂 Happy Birthday Harshita! 🎂', 'color: #FF1493; font-size: 24px; font-weight: bold; text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.5);');
 console.log('%cMade with 💗 by Piyush', 'color: #FF69B4; font-size: 16px; font-weight: 600;');
-console.log('%cSwipe or use arrow keys to navigate →', 'color: #FFB6C1; font-size: 14px;');
+console.log('%cMusic starts on first tap 🎵', 'color: #FFB6C1; font-size: 14px;');
 
 // ===== ERROR HANDLING =====
 window.addEventListener('error', (e) => {
@@ -340,4 +350,4 @@ if ('loading' in HTMLImageElement.prototype) {
   });
 }
 
-console.log('✅ Script loaded successfully!');
+console.log('✅ Script loaded! Music will start on first tap.');
