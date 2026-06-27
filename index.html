@@ -135,6 +135,28 @@ Continue ❤️
     
 <script src="script.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+<script>
+  // Confetti blast on page load
+  window.addEventListener('load', () => {
+    confetti({
+      particleCount: 200,
+      spread: 160,
+      origin: { y: 0.6 }
+    });
+    
+    // Second smaller blast after 2 seconds
+    setTimeout(() => {
+      confetti({
+        particleCount: 100,
+        spread: 120,
+        origin: { y: 0.7 }
+      });
+    }, 2000);
+  });
+</script>
+    
 </body>
 
 <div class="petals-container">
