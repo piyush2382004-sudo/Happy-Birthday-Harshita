@@ -1,0 +1,94 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff4d6d,#ff99c8,#ffd6e0);
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+}
+
+.loading,
+.main{
+width:100%;
+padding:20px;
+}
+
+.hidden{
+display:none;
+}
+
+.title{
+font-size:38px;
+margin-bottom:20px;
+animation:zoom 2s infinite alternate;
+}
+
+.photo{
+width:220px;
+height:220px;
+border-radius:50%;
+object-fit:cover;
+border:6px solid white;
+box-shadow:0 0 30px rgba(255,255,255,.8);
+margin-bottom:20px;
+}
+
+.msg{
+font-size:22px;
+margin:20px;
+font-weight:bold;
+}
+
+button{
+padding:14px 30px;
+border:none;
+border-radius:40px;
+font-size:18px;
+background:white;
+color:#ff2d55;
+cursor:pointer;
+margin-top:15px;
+box-shadow:0 0 20px rgba(255,255,255,.6);
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.08);
+}
+
+.hearts::before{
+content:"❤️ ❤️ ❤️ ❤️ ❤️";
+font-size:28px;
+display:block;
+margin-top:30px;
+animation:float 3s infinite linear;
+}
+
+@keyframes float{
+0%{
+transform:translateY(20px);
+opacity:0;
+}
+100%{
+transform:translateY(-250px);
+opacity:1;
+}
+}
+
+@keyframes zoom{
+from{
+transform:scale(1);
+}
+to{
+transform:scale(1.08);
+}
+}
